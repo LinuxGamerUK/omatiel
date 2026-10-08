@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "com.github.linuxgameruk.omatiel",
+  "name": "OmaTiel",
+  "version": "1.0.0",
+  "author": "LinuxGamerUK",
+  "license": "MIT",
+  "description": "Start and stop the Tiel-Coder llama.cpp local LLM (tiel-coder.service user unit, 262k ctx + MTP) from the Omarchy bar. Shows service state, served model + context, and VRAM use.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "OmaTiel",
+    "description": "On/off for the tuned Tiel-Coder llama-server (tiel-coder.service). Shows state, model, ctx and VRAM.",
+    "category": "System",
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "refreshIntervalSec": 10,
+      "unitName": "tiel-coder",
+      "port": 8080
+    },
+    "schema": [
+      {
+        "key": "refreshIntervalSec",
+        "type": "integer",
+        "label": "Refresh interval (seconds)",
+        "min": 2,
+        "max": 300,
+        "step": 1,
+        "defaultValue": 10
+      },
+      {
+        "key": "unitName",
+        "type": "string",
+        "label": "systemd user unit name (without .service)",
+        "defaultValue": "tiel-coder"
+      },
+      {
+        "key": "port",
+        "type": "integer",
+        "label": "Server API port",
+        "min": 1024,
+        "max": 65535,
+        "step": 1,
+        "defaultValue": 8080
+      }
+    ]
+  },
+  "repository": "https://github.com/LinuxGamerUK/omatiel"
+}
